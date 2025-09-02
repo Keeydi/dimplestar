@@ -1,4 +1,4 @@
 <?php
 	session_start();
-	$conn = mysqli_connect("localhost", "root", null, "dimplestar");
+	$conn = mysqli_connect("localhost", "root", null, "ruta");
 ?>

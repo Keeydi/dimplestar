@@ -10,6 +10,7 @@ session_start();
 <link rel="stylesheet" type="text/css" href="style/header.css" />
 <link rel="stylesheet" type="text/css" href="style/index.css" />
 <link rel="stylesheet" type="text/css" href="style/choose.css" />
+<link rel="stylesheet" type="text/css" href="style/footer.css" />
 <link rel="icon" href="images/lul.svg" type="image/svg+xml">
 <script src="slide/js/jquery.js"></script>
 <script src="slide/js/amazingslider.js"></script>
@@ -20,7 +21,8 @@ session_start();
 		<div class="header-container">
 			<div class="header-left">
 				<a class="logo-link" href="index.php">
-					<img src="images/lul.svg" alt="Dimple Star Transport Logo" class="logo-image" />
+					<img src="images/lul.svg" alt="Dimple Star Transport Logo" class="logo-image logo-dark" />
+					<img src="images/light.svg" alt="Dimple Star Transport Logo" class="logo-image logo-light" />
 					<span class="company-name">Dimple Star Transport</span>
 				</a>
 
@@ -49,6 +51,21 @@ session_start();
 							<path d="M1.90321 7.29677C1.90321 10.341 4.11088 12.8516 7.02812 13.6569C7.02812 13.6569 6.76701 13.6569 6.76701 13.6569C4.08672 13.6569 1.90321 11.4734 1.90321 8.79311C1.90321 8.79311 1.90321 8.53199 1.90321 8.27088C1.90321 7.29677 1.90321 7.29677 1.90321 7.29677ZM8.76701 13.6569C8.76701 13.6569 8.50589 13.6569 8.24478 13.6569C11.162 12.8516 13.3697 10.341 13.3697 7.29677C13.3697 7.29677 13.3697 7.29677 13.3697 7.29677C13.3697 4.25254 11.162 1.74219 8.24478 0.93689C8.50589 0.93689 8.76701 0.93689 8.76701 0.93689C8.76701 0.93689 8.76701 0.93689 8.76701 0.93689C8.76701 1.198 8.76701 1.45911 8.76701 1.72023C8.76701 4.25254 6.5835 6.43605 3.90321 6.43605C3.90321 6.43605 3.90321 6.43605 3.90321 6.43605C3.90321 6.43605 3.90321 6.43605 3.90321 6.43605C3.90321 9.11634 5.08672 11.2998 7.76701 11.2998C7.76701 11.2998 7.76701 11.2998 7.76701 11.2998C7.76701 11.2998 7.76701 11.2998 7.76701 11.2998C7.76701 11.5609 7.76701 11.822 7.76701 12.0831C7.76701 12.0831 7.76701 12.0831 7.76701 12.0831C7.76701 12.0831 7.76701 12.0831 7.76701 12.0831C7.76701 13.6569 8.76701 13.6569 8.76701 13.6569Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>
 						</svg>
 					</button>
+					
+					<!-- Mobile Menu Button -->
+					<button 
+						class="mobile-menu-btn" 
+						type="button" 
+						aria-label="Toggle mobile menu" 
+						onclick="toggleMobileMenu()"
+					>
+						<div class="menu-icon">
+							<span class="bar"></span>
+							<span class="bar"></span>
+							<span class="bar"></span>
+						</div>
+					</button>
+					
 					<?php
 						if(isset($_SESSION['email'])){
 							$email = $_SESSION['email'];
@@ -66,6 +83,18 @@ session_start();
 
 		<!-- Mobile Menu -->
 		<div id="mobile-menu" class="mobile-menu">
+			<div class="mobile-menu-header">
+				<a href="index.php" class="mobile-menu-logo">
+					<img src="images/lul.svg" alt="Dimple Star Transport Logo" class="logo-image logo-dark" />
+					<img src="images/light.svg" alt="Dimple Star Transport Logo" class="logo-image logo-light" />
+					<span class="company-name">Dimple Star Transport</span>
+				</a>
+				<button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Close mobile menu">
+					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
+			</div>
 			<nav class="mobile-nav">
 				<a href="index.php" class="mobile-nav-link active">Home</a>
 				<a href="about.php" class="mobile-nav-link">About Us</a>
@@ -75,6 +104,9 @@ session_start();
 				<a href="book.php" class="mobile-nav-link mobile-nav-link-primary">Book Now</a>
 			</nav>
 		</div>
+		
+		<!-- Mobile Menu Overlay -->
+		<div id="mobile-menu-overlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
 
 		<div class="header-divider"></div>
 		
@@ -126,18 +158,7 @@ session_start();
                     </a>
                 </div>
                 
-                <!-- Scroll Down Button -->
-                <div class="scroll-down-container">
-                    <button class="scroll-down-btn" onclick="scrollToSection('why-choose-us')" aria-label="Scroll to Why Choose Us section">
-                        <span class="scroll-text">Discover More</span>
-                        <div class="scroll-arrow">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 4L16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                    </button>
-                </div>
+
             </div>
         </div>
     </section>
@@ -145,6 +166,8 @@ session_start();
     <!-- Why Choose Us Section -->
     <?php include 'choose.php'; ?>
     
+    <!-- Footer -->
+    <?php include 'footer.php'; ?>
 
 </div>
 
@@ -161,6 +184,24 @@ session_start();
 			body.classList.add('dark-mode');
 			localStorage.setItem('theme', 'dark');
 		}
+		
+		// Update logo visibility
+		updateLogoVisibility();
+	}
+	
+	// Update logo visibility based on current theme
+	function updateLogoVisibility() {
+		const isDark = document.body.classList.contains('dark-mode');
+		const logoDark = document.querySelector('.logo-dark');
+		const logoLight = document.querySelector('.logo-light');
+		
+		if (isDark) {
+			logoDark.style.display = 'block';
+			logoLight.style.display = 'none';
+		} else {
+			logoDark.style.display = 'none';
+			logoLight.style.display = 'block';
+		}
 	}
 	
 	// Initialize theme on page load
@@ -173,7 +214,15 @@ session_start();
 		} else {
 			document.body.classList.remove('dark-mode');
 		}
+		
+		// Initialize logo visibility
+		updateLogoVisibility();
 	}
+	
+	// Call initialize function when page loads
+	document.addEventListener('DOMContentLoaded', function() {
+		initializeTheme();
+	});
 	
 	// Typing Animation Effect
 	const phrases = [
@@ -247,16 +296,37 @@ session_start();
 	// Mobile Menu Toggle
 	function toggleMobileMenu() {
 		const mobileMenu = document.getElementById('mobile-menu');
+		const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 		const menuBtn = document.querySelector('.mobile-menu-btn');
+		const body = document.body;
 		
 		if (mobileMenu.classList.contains('active')) {
+			// Close menu
 			mobileMenu.classList.remove('active');
+			mobileMenuOverlay.classList.remove('active');
 			menuBtn.classList.remove('active');
+			body.style.overflow = '';
 		} else {
+			// Open menu
 			mobileMenu.classList.add('active');
+			mobileMenuOverlay.classList.add('active');
 			menuBtn.classList.add('active');
+			body.style.overflow = 'hidden';
 		}
 	}
+	
+	// Close mobile menu when clicking on a link
+	document.addEventListener('DOMContentLoaded', function() {
+		const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+		mobileNavLinks.forEach(link => {
+			link.addEventListener('click', function() {
+				// Close mobile menu after a short delay to allow navigation
+				setTimeout(() => {
+					toggleMobileMenu();
+				}, 100);
+			});
+		});
+	});
 	
 	// Start typing animation when page loads
 	document.addEventListener('DOMContentLoaded', function() {
