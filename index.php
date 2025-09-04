@@ -12,9 +12,9 @@ session_start();
 <link rel="stylesheet" type="text/css" href="style/choose.css" />
 <link rel="stylesheet" type="text/css" href="style/footer.css" />
 <link rel="icon" href="images/lul.svg" type="image/svg+xml">
-<script src="slide/js/jquery.js"></script>
-<script src="slide/js/amazingslider.js"></script>
-<script src="slide/js/initslider-1.js"></script>
+<script src="slide/js/jquery.js" defer></script>
+<script src="slide/js/amazingslider.js" defer></script>
+<script src="slide/js/initslider-1.js" defer></script>
 </head>
 <body>
 	<header id="header" class="header-modern">
@@ -312,10 +312,7 @@ session_start();
 		const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 		mobileNavLinks.forEach(link => {
 			link.addEventListener('click', function() {
-				// Close mobile menu after a short delay to allow navigation
-				setTimeout(() => {
-					toggleMobileMenu();
-				}, 100);
+				toggleMobileMenu();
 			});
 		});
 	});
@@ -329,7 +326,7 @@ session_start();
 		if (typingElement) {
 			// Clear any existing text and start fresh
 			typingElement.textContent = "";
-			setTimeout(typeText, 500);
+			typeText();
 		}
 	});
 	

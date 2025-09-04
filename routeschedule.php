@@ -531,11 +531,8 @@ session_start();
 		priceInput.value = maxPrice;
 		currentFilters.maxPrice = maxPrice;
 		
-		// Add visual feedback
-		priceValue.style.transform = 'scale(1.1)';
-		setTimeout(() => {
-			priceValue.style.transform = 'scale(1)';
-		}, 200);
+		// Add visual feedback without delay
+		priceValue.style.transform = 'scale(1.05)';
 		
 		applyFilters();
 	}
@@ -562,11 +559,8 @@ session_start();
 		priceValue.textContent = '₱' + validPrice;
 		currentFilters.maxPrice = validPrice;
 		
-		// Add visual feedback
-		priceValue.style.transform = 'scale(1.1)';
-		setTimeout(() => {
-			priceValue.style.transform = 'scale(1)';
-		}, 200);
+		// Add visual feedback without delay
+		priceValue.style.transform = 'scale(1.05)';
 		
 		applyFilters();
 	}
@@ -640,9 +634,7 @@ session_start();
 			} else {
 				card.style.opacity = '0';
 				card.style.transform = 'scale(0.95)';
-				setTimeout(() => {
-					card.style.display = 'none';
-				}, 200);
+				card.style.display = 'none';
 			}
 		});
 		
@@ -784,24 +776,22 @@ session_start();
 		// Add loading state
 		btn.classList.add('loading');
 		
-		setTimeout(() => {
-			// Redirect to booking page with route details
-			const card = document.getElementById(routeId);
-			const origin = card.querySelector('.route-route').textContent.split(' → ')[0];
-			const destination = card.querySelector('.route-route').textContent.split(' → ')[1];
-			const time = card.querySelector('.route-detail:nth-child(3) .route-value').textContent;
-			const price = card.querySelector('.route-price').textContent;
-			
-			// Store route details in sessionStorage for booking page
-			sessionStorage.setItem('selectedRoute', JSON.stringify({
-				origin: origin,
-				destination: destination,
-				time: time,
-				price: price
-			}));
-			
-			window.location.href = 'book.php';
-		}, 500);
+		// Redirect to booking page with route details immediately
+		const card = document.getElementById(routeId);
+		const origin = card.querySelector('.route-route').textContent.split(' → ')[0];
+		const destination = card.querySelector('.route-route').textContent.split(' → ')[1];
+		const time = card.querySelector('.route-detail:nth-child(3) .route-value').textContent;
+		const price = card.querySelector('.route-price').textContent;
+		
+		// Store route details in sessionStorage for booking page
+		sessionStorage.setItem('selectedRoute', JSON.stringify({
+			origin: origin,
+			destination: destination,
+			time: time,
+			price: price
+		}));
+		
+		window.location.href = 'book.php';
 	}
 
 	// Enhanced mobile menu toggle
@@ -837,7 +827,7 @@ session_start();
 		const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 		mobileNavLinks.forEach(link => {
 			link.addEventListener('click', function() {
-				setTimeout(() => { toggleMobileMenu(); }, 100);
+				toggleMobileMenu();
 			});
 		});
 		
