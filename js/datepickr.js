@@ -62,7 +62,14 @@ var datepickr = (function() {
 						}
 						rebuildCalendar.call(this);
 					break;
+					case 'day disabled':
+						return;
 					case 'day':
+						// extra guard: do not allow selecting any date before today
+						var d = parseInt(e.target.innerHTML, 10);
+						var clicked = new Date(this.currentYearView, this.currentMonthView, d);
+						var today = new Date(); today.setHours(0,0,0,0);
+						if(clicked.getTime() < today.getTime()) { return; }
 						this.element.value = formatDate(new Date(this.currentYearView, this.currentMonthView, e.target.innerHTML).getTime(), this.config.dateFormat);
 						this.close();
 					break;
@@ -207,6 +214,13 @@ var datepickr = (function() {
 		return day == date.current.day() && currentMonthView == date.current.month.integer() && currentYearView == date.current.year();
 	}
 	
+	function isPast(day, currentMonthView, currentYearView) {
+		var today = new Date();
+		today.setHours(0,0,0,0);
+		var test = new Date(currentYearView, currentMonthView, day);
+		return test.getTime() < today.getTime();
+	}
+	
 	function buildWeekdays() {
 		var weekdayHtml = document.createDocumentFragment();
 		foreach(weekdays, function(weekday) {
@@ -262,7 +276,8 @@ var datepickr = (function() {
 			}
 			
 			var todayClassName = isToday(i, currentMonthView, currentYearView) ? { className: 'today' } : null;
-			row.appendChild(buildNode('td', todayClassName, buildNode('span', { className: 'day' }, i)));
+			var dayClass = isPast(i, currentMonthView, currentYearView) ? 'day disabled' : 'day';
+			row.appendChild(buildNode('td', todayClassName, buildNode('span', { className: dayClass }, i)));
 			
 			dayCount++;
 		}
@@ -358,6 +373,8 @@ var datepickr = (function() {
 		
 		if(this.element.nodeName == 'INPUT') {
 			addEvent(this.element, 'focus', this.open);
+			// Prevent manual typing to bypass disabled past days
+			addEvent(this.element, 'keydown', function(e){ e.preventDefault(); });
 		} else {
 			addEvent(this.element, 'click', this.open);
 		}

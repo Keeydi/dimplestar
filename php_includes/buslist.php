@@ -2,7 +2,7 @@
 	$Origin = $_SESSION['Origin'];
 	$Destination = $_SESSION['Destination'];
 	$Departure = $_SESSION['Departure'];
-	$Number = $_SESSION['Number'];
+	$Number = isset($_SESSION['Number']) ? $_SESSION['Number'] : (isset($_SESSION['Number_Pass']) ? $_SESSION['Number_Pass'] : null);
 	$BusType = $_SESSION['BusType'];
 	$result = mysqli_query($conn, "SELECT * FROM routes WHERE origin='$Origin' AND destination='$Destination' AND bustype='$BusType'");
 
