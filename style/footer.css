@@ -73,6 +73,7 @@
 	margin: 0;
 }
 
+<<<<<<< HEAD
 /* Override contact.php styles for footer contact info */
 .footer-modern .contact-info,
 .footer-modern .contact-item,
@@ -88,29 +89,37 @@
 	gap: 0.5rem !important;
 }
 
+=======
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 /* Contact Info */
 .contact-info {
 	display: flex;
 	flex-direction: column;
 	gap: 0.25rem;
+<<<<<<< HEAD
 	background: none !important;
 	border: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
 	box-shadow: none !important;
 	border-radius: 0 !important;
+=======
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 }
 
 .contact-item {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+<<<<<<< HEAD
 	background: none !important;
 	border: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
 	box-shadow: none !important;
 	border-radius: 0 !important;
+=======
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 }
 
 .contact-icon {
@@ -123,12 +132,15 @@
 	text-decoration: none;
 	font-size: 0.875rem;
 	transition: color 0.2s ease;
+<<<<<<< HEAD
 	background: none !important;
 	border: none !important;
 	padding: 0 !important;
 	margin: 0 !important;
 	box-shadow: none !important;
 	border-radius: 0 !important;
+=======
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 }
 
 .contact-link:hover {

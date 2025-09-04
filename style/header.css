@@ -391,7 +391,44 @@
 	font-weight: 500;
 }
 
+<<<<<<< HEAD
 /* Login functionality removed - logout and auth link styles removed */
+=======
+.logout-btn {
+	display: inline-block;
+	padding: 8px 16px;
+	background: #dc3545;
+	color: #ffffff;
+	text-decoration: none;
+	border-radius: 6px;
+	font-size: 12px;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+	background: #c82333;
+	transform: translateY(-1px);
+}
+
+.auth-link {
+	display: inline-block;
+	padding: 8px 16px;
+	background: #0d9adc;
+	color: #ffffff;
+	text-decoration: none;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	white-space: nowrap;
+}
+
+.auth-link:hover {
+	background: #0b7bb8;
+	transform: translateY(-1px);
+}
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 
 /* Header Responsive Design */
 @media (max-width: 1024px) {

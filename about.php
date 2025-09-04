@@ -8,9 +8,12 @@ session_start();
 <title>Dimple Star Transport</title>
 <link rel="stylesheet" type="text/css" href="style/style.css" />
 <link rel="stylesheet" type="text/css" href="style/header.css" />
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="style/about.css" />
 <link rel="stylesheet" type="text/css" href="style/footer.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+=======
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 <link rel="icon" href="images/lul.svg" type="image/svg+xml">
 <style>
 .map-title {
@@ -108,8 +111,21 @@ session_start();
 					</button>
 					
 					<?php
+<<<<<<< HEAD
 						// Login functionality removed
 						?>
+=======
+						if(isset($_SESSION['email'])){
+							$email = $_SESSION['email'];
+							echo "<div class='user-welcome'>";
+							echo "<span class='welcome-text'>Welcome, ". $email. "!</span>";
+							echo "<a href='logout.php' class='logout-btn'>Logout</a>";
+							echo "</div>";
+						}
+						if(empty($email)){
+							echo "<a href='signlog.php' class='auth-link'>SignUp / Login</a>";
+						}?>
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 				</nav>
 			</div>
 		</div>
@@ -149,6 +165,7 @@ session_start();
 
 <div id="wrapper">
     <div id="content">
+<<<<<<< HEAD
     	<section class="about-hero">
     		<div class="about-hero-inner">
     			<h1 class="about-title">About Dimple Star Transport</h1>
@@ -259,6 +276,13 @@ session_start();
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+=======
+    	<!-- Content will be added here -->
+    </div>
+
+</div>
+
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 <script>
 	// Dark Mode Toggle
 	function toggleTheme() {
@@ -295,11 +319,17 @@ session_start();
 	// Initialize theme on page load
 	function initializeTheme() {
 		const savedTheme = localStorage.getItem('theme');
+<<<<<<< HEAD
+=======
+		
+		// Default to light mode if no theme is saved
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 		if (savedTheme === 'dark') {
 			document.body.classList.add('dark-mode');
 		} else {
 			document.body.classList.remove('dark-mode');
 		}
+<<<<<<< HEAD
 		updateLogoVisibility();
 	}
 
@@ -346,6 +376,16 @@ session_start();
 			bounds.push([terminal.lat, terminal.lng]);
 		});
 		if(bounds.length){ map.fitBounds(bounds, { padding:[30,30] }); }
+=======
+		
+		// Initialize logo visibility
+		updateLogoVisibility();
+	}
+	
+	// Call initialize function when page loads
+	document.addEventListener('DOMContentLoaded', function() {
+		initializeTheme();
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 	});
 	
 	// Mobile Menu Toggle
@@ -356,11 +396,19 @@ session_start();
 		const body = document.body;
 		
 		if (mobileMenu.classList.contains('active')) {
+<<<<<<< HEAD
+=======
+			// Close menu
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 			mobileMenu.classList.remove('active');
 			mobileMenuOverlay.classList.remove('active');
 			menuBtn.classList.remove('active');
 			body.style.overflow = '';
 		} else {
+<<<<<<< HEAD
+=======
+			// Open menu
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 			mobileMenu.classList.add('active');
 			mobileMenuOverlay.classList.add('active');
 			menuBtn.classList.add('active');
@@ -373,10 +421,25 @@ session_start();
 		const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 		mobileNavLinks.forEach(link => {
 			link.addEventListener('click', function() {
+<<<<<<< HEAD
 				setTimeout(() => { toggleMobileMenu(); }, 100);
 			});
 		});
 	});
+=======
+				// Close mobile menu after a short delay to allow navigation
+				setTimeout(() => {
+					toggleMobileMenu();
+				}, 100);
+			});
+		});
+	});
+	
+	// Initialize theme when page loads
+	document.addEventListener('DOMContentLoaded', function() {
+		initializeTheme();
+	});
+>>>>>>> e63577ad1850ee4ca650b958b2563d1de9f40366
 </script>
 </body>
 </html>
